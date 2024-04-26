@@ -27,7 +27,7 @@ class PilaArregloTest extends TestCase {
     }
 
     /**
-     * @dataProvider pilaProvider
+     * @dataProvider pilaProviderRand
      */
     public function testApilar2($datos, $tamanio) {
         $p = new PilaArreglo();
@@ -46,12 +46,32 @@ class PilaArregloTest extends TestCase {
         $this->assertEquals($cantidad, $tamanio);
     }
 
+
     public function pilaProvider():array {
+
         return [
             [[3, 4, 1, 8], 4],
             [[], 0],
             [[7], 1]
         ];
+
     }
 
+
+    public function pilaProviderRand():array {
+        $salida = [];
+
+        $cantidadPruebas = rand(1, 100);
+        for ($i = 0; $i < $cantidadPruebas; $i++) {
+            $tamanioPrueba = rand(0, 100);
+            $arrayTest = [];
+            for ($j = 0; $j < $tamanioPrueba; $j++) {
+                $arrayTest[] = rand(1, 100);
+            }
+            
+            $salida[] = [$arrayTest, $tamanioPrueba];
+        }
+        
+        return $salida;
+    }
 }
