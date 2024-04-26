@@ -37,7 +37,7 @@
         // Pila inicializada y no vacía
         public function Tope() {
             if (!$this->PilaVacia()) {
-                return $this->data[$this->indice];
+                return $this->data[$this->indice -1];
             }
         }
 
